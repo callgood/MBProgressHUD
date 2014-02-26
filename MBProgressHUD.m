@@ -127,7 +127,15 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 	MBProgressHUD *hud = [[self alloc] initWithView:view];
 	[view addSubview:hud];
 	[hud show:animated];
+    
+    [hud performSelector:@selector(removeHUDFromSuperview) withObject:nil afterDelay:10];
+    
 	return MB_AUTORELEASE(hud);
+}
+
+-(void)removeHUDFromSuperview
+{
+    [self removeFromSuperview];
 }
 
 + (BOOL)hideHUDForView:(UIView *)view animated:(BOOL)animated {
